@@ -69,7 +69,7 @@
         this.$todoDialog.close();
       },
       gotoCategories(){
-        this.$router.push({path: '/categories'});
+        this.$router.push({path: '/'});
       }
     },
     mounted(){

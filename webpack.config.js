@@ -8,8 +8,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
+    path: path.resolve(__dirname, './doc'),
+    publicPath: '/doc/',
     filename: 'build.js'
   },
   module: {
@@ -58,7 +58,10 @@ module.exports = {
   },
   devtool: '#eval-source-map',
   plugins: [
-    new HtmlWebpackPlugin({template: './index.html'}),
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      inject:false
+    }),
     new TransferWebpackPlugin([{
       from: __dirname + '/lib',
       to: 'lib'
@@ -84,6 +87,8 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.LoaderOptionsPlugin({
       minimize: true
     }),
-    new OfflinePlugin()
+    new OfflinePlugin({
+      publicPath:''
+    })
   ])
 }

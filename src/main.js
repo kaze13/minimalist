@@ -5,7 +5,10 @@ import CategoryList from './components/category-list.vue';
 import Category from './components/category.vue';
 import Store from './store';
 import * as OfflinePluginRuntime from 'offline-plugin/runtime';
-OfflinePluginRuntime.install();
+
+if(process.env.NODE_ENV === 'production'){
+  OfflinePluginRuntime.install();
+}
 
 Vue.use(VueRouter);
 
@@ -13,7 +16,7 @@ const router = new VueRouter({
   mode: 'hash',
   routes: [
     {
-      path: '/categories',
+      path: '/',
       name: 'categories',
       component: CategoryList,
       props: {categories: Store.categories, deleteCategory:Store.mutations.deleteCategory}
