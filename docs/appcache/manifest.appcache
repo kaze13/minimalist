@@ -1,16 +1,16 @@
 CACHE MANIFEST
-#ver:4/9/2017, 9:25:26 PM
+#ver:4/9/2017, 9:36:25 PM
 #plugin:4.6.2
 
 CACHE:
 ../build.js
 ../
 ../lib/dialog-polyfill.min.css
-../lib/dialog-polyfill.min.js
 ../lib/icon.css
+../lib/font.woff
+../lib/dialog-polyfill.min.js
 ../lib/material.min.css
 ../lib/material.min.js
-../lib/font.woff
 
 NETWORK:
 *

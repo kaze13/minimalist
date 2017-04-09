@@ -1,5 +1,5 @@
 <style lang="scss" rel="stylesheet/scss" scoped>
-    .category-dialog{
+    #category-dialog{
         top:20%;
     }
 </style>

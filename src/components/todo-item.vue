@@ -65,7 +65,7 @@
       });
       hammer.on('swiperight', () => {
         this.swipeLeft = false;
-        this.$refs.elem.classList.add('swipe-left');
+        this.$refs.elem.classList.remove('swipe-left');
       });
     }
   }
