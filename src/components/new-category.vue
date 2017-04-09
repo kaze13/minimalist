@@ -1,4 +1,7 @@
-<style lang="scss" rel="stylesheet/scss">
+<style lang="scss" rel="stylesheet/scss" scoped>
+    .category-dialog{
+        top:20%;
+    }
 </style>
 <script>
   export default{

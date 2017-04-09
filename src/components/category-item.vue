@@ -1,4 +1,4 @@
-<style lang="scss" rel="stylesheet/scss">
+<style lang="scss" rel="stylesheet/scss" scoped>
     $delete-width: 90px;
     .todo-category {
         transition: right .3s;

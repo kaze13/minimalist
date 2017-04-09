@@ -1,4 +1,4 @@
-<style lang="scss" rel="stylesheet/scss">
+<style lang="scss" rel="stylesheet/scss" scoped>
     $delete-width: 90px;
     .todo-item {
         transition: right .3s;
@@ -50,7 +50,7 @@
     props: ['todo', 'deleteTodo', 'categoryId'],
     methods: {
       gotoTodo(){
-        this.$router.push({path: `/category/${this.category.id}`});
+//        this.$router.push({path: `/category/${this.category.id}`});
       },
       _deleteTodo(){
         this.deleteTodo(this.todo, this.categoryId);
@@ -65,7 +65,7 @@
       });
       hammer.on('swiperight', () => {
         this.swipeLeft = false;
-        this.$refs.elem.classList.remove('swipe-left');
+        this.$refs.elem.classList.add('swipe-left');
       });
     }
   }

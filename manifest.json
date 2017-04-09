@@ -1,0 +1,17 @@
+{
+  "short_name": "Minimalist",
+  "name": "Minimalist",
+  "background_color": "#2196F3",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/favicons/android-chrome-192x192.png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/favicons/android-chrome-512x512.png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "index.html?launcher=true"
+}

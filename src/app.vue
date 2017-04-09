@@ -1,4 +1,4 @@
-<style lang="scss" rel="stylesheet/scss">
+<style lang="scss" rel="stylesheet/scss" scoped>
     .main-header {
         display: flex;
         justify-content: center;
@@ -21,7 +21,7 @@
     .view {
         position: absolute;
         width: 100%;
-        transition: all .5s cubic-bezier(.55, 0, .1, 1);
+        transition: all .3s cubic-bezier(.55, 0, .1, 1);
     }
 
     .slide-left-enter, .slide-right-leave-active {
@@ -32,6 +32,14 @@
     .slide-left-leave-active, .slide-right-enter {
         opacity: 0;
         transform: translate(-30px, 0);
+    }
+
+    .slide-up-enter-active, .slide-up-leave-active {
+        transition: all .3s;
+    }
+    .slide-up-enter, .slide-up-leave-to /* .fade-leave-active in <2.1.8 */ {
+        transform: translate(0,100%);
+        opacity: 0
     }
 </style>
 <script>
@@ -45,6 +53,7 @@
   export default{
     data(){
       return Object.assign({
+        addTodoDialogShown: false,
         transitionName: 'slide-left'
       }, Store);
     },
@@ -61,22 +70,21 @@
       closeAddCategoryDialog(){
         this.$categoryDialog.close();
       },
-
       openAddTodoDialog(){
-        this.$todoDialog.showModal();
+        this.addTodoDialogShown = true;
       },
       closeAddTodoDialog(){
-        this.$todoDialog.close();
+        this.addTodoDialogShown = false;
       },
       gotoCategories(){
         this.$router.push({path: '/'});
       }
     },
     mounted(){
-      this.$todoDialog = document.querySelector('#todo-dialog');
+//      this.$todoDialog = document.querySelector('#todo-dialog');
       this.$categoryDialog = document.querySelector('#category-dialog');
-      if (!this.$todoDialog.showModal) {
-        dialogPolyfill.registerDialog(this.$todoDialog);
+      if (!this.$categoryDialog.showModal) {
+//        dialogPolyfill.registerDialog(this.$todoDialog);
         dialogPolyfill.registerDialog(this.$categoryDialog);
       }
     },
@@ -93,7 +101,6 @@
         <header class="mdl-layout__header main-header" @click="gotoCategories">
             <div class="main-title">Minimalist</div>
         </header>
-
         <main class="mdl-layout__content main-content">
             <div class="page-content">
                 <transition :name="transitionName">
@@ -113,7 +120,10 @@
         </main>
 
         <new-category :add-category="mutations.addCategory" :close="closeAddCategoryDialog"></new-category>
-        <new-todo :add-todo="mutations.addTodo" :close="closeAddTodoDialog" :category-id="$route.params.id"></new-todo>
+        <transition name="slide-up">
+            <new-todo v-show="addTodoDialogShown" :add-todo="mutations.addTodo" :close="closeAddTodoDialog"
+                      :category-id="$route.params.id"></new-todo>
+        </transition>
     </div>
 </template>
 

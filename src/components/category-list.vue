@@ -1,4 +1,4 @@
-<style lang="scss" rel="stylesheet/scss">
+<style lang="scss" rel="stylesheet/scss" scoped>
     .category-list{
         background-color: white;
     }
@@ -20,7 +20,7 @@
 </script>
 <template>
     <div class="category-list">
-        <category-item v-for="item in categories" :category="item" :deleteCategory="deleteCategory"></category-item>
+        <category-item :key="item.id" v-for="item in categories" :category="item" :deleteCategory="deleteCategory"></category-item>
     </div>
 </template>
 
